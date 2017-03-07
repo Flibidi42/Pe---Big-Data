@@ -1,3 +1,4 @@
+library(jsonlite)
 my_data <- fromJSON("sample_69.json");
 
 #Id conteneur
