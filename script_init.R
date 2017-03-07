@@ -55,4 +55,4 @@ for (i in 1:nrow(my_data)) {
 }
 
 #Date
-Date <- my_data$createdAt$`$date`
+Date <- my_data$createdAt
