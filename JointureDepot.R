@@ -32,3 +32,4 @@ for (i in 1:length(DepotListe)) {
 }
 
 JDepot<-data.frame(IdD,IdUserD,IdContD,sizeD,typeD,DateD)
+JDepot<-JDepot[order(JDepot$DateD),]
