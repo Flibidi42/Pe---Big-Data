@@ -1,2 +1,26 @@
 #Jointure exprimant les dépot des utilisateurs en fonction des conteneurs
 
+IdD<-vector();#Primary key
+IdUserD<-vector();#Foreign key
+IdContD<-vector();#Foreign key
+typeD<-vector();
+sizeD<-vector();
+for (i in 1:length(DepotListe)) {
+  #Parcours de chaque requÃªte
+  if (is.null(DepotListe[[i]])) {}
+  else{
+    for (j in 1:length(DepotListe[[i]])) {
+      #Parcours de chaque dÃ©pot au sein de la requÃªte
+      if (is.na(DepotListe[[i]][j, "UserId"])) {#TODO : Compter la proportion de na au sein du set de donnée
+      } else{
+        IdD <-c(IdD,length(IdD)+1);
+        IdUserD <- c(IdUserD, as.character(DepotListe[[i]][j, "UserId"]))
+        IdContD <- c(IdContD,as.character(ID_Conteneur[i]))
+        sizeD <- c(sizeD, as.character(DepotListe[[i]][j, "WasteSize"]))
+        typeD<-c(typeD,as.character(DepotListe[[i]][j,"WasteType"]))
+        #Rajouter la date du dépot
+      }
+    }
+  }
+}
+JDepot<-data.frame(IdD,IdUserD,IdContD,sizeD,typeD)

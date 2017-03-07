@@ -17,7 +17,6 @@ for (i in 1:length(DepotListe)) {
         if (is.element(DepotListe[[i]][j, "UserId"], UserList)) {
         } else{
           UserList <- c(UserList, as.character(DepotListe[[i]][j, "UserId"]))
-          
         }
       }
     }
