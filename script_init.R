@@ -6,28 +6,29 @@ IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
 
 #Liste des dépots
 DepotListe <- list();
-UserId <- vector(); #Vecteur d'ID user
-WasteSize <- vector(); #Vecteur de WasteSize
-WasteType <- vector(); #Vecteur de WasteType
-DepotDate <- vector(); #Vecteur de date de dépot
-DepotLat <- vector()
+l <- vector();
 for(i in 1:nrow(my_data)){# On parcourt les différents relevés
   if(is.null(my_data[i,"containerDataList"][[1]])){ # cas où il n'y pas de dépot(NULL)
     DepotListe[[i]] <- NULL;
   }
   else{
+    UserId <- vector(); #Vecteur d'ID user
+    WasteSize <- vector(); #Vecteur de WasteSize
+    WasteType <- vector(); #Vecteur de WasteType
+    DepotDate <- vector(); #Vecteur de date de dépot
+    DepotLat <- vector()
     for(j in 1:nrow(my_data[i,"containerDataList"][[1]])){ # On parcourt les différents dépots
+      l <-c(l,length(l)+1);
       UserId <- c(UserId, my_data[i,"containerDataList"][[1]][j,"userId"][,"$binary"]);
       WasteSize <- c(WasteSize, strtoi(my_data[i,"containerDataList"][[1]][j,"wasteSize"][1,1]));
       WasteType <- c(WasteType, strtoi(my_data[i,"containerDataList"][[1]][j,"wasteType"][1,1]));
       DepotDate <- c(DepotDate, as.character(my_data[i,"containerDataList"][[1]][j,"date"]));
       DepotLat <- c(DepotLat, as.double(my_data$containerInfoList[[i]]$latitude[length(my_data$containerInfoList[[i]]$latitude)]))
     }
-    DepotListe[[i]] <- data.frame(UserId,WasteSize,WasteType); #On regroupe tout ça dans la liste des dépots
+    DepotListe[[i]] <- data.frame(UserId,DepotLat,WasteSize,WasteType,DepotDate); #On regroupe tout ça dans la liste des dépots
+    #TestList <- data.frame(UserId,,WasteSize,WasteType,DepotDate)
   }
 }
-
-TestList <- data.frame(UserId,DepotLat,WasteSize,WasteType,DepotDate)
 
 #Info geo
 Latitude <- vector();
@@ -40,4 +41,4 @@ for(i in 1:nrow(my_data)){
 }
 
 #Date
-Date <- my_data$createdAt$`$date`
+Date <- my_data$createdAt
