@@ -5,7 +5,7 @@ LatitudeCont <- vector();
 LongitudeCont <- vector();
 IDCont <- vector();
 
-print("Création de la table des conteneurs")
+print("Creation de la table des conteneurs")
 for(i in 1:length(ID_Conteneur)){
   if(Latitude[i]>0){
     if(is.element(ID_Conteneur[i],IDCont)){}
