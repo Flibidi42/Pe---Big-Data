@@ -14,18 +14,68 @@ JDepot["jourRelatif"]<-jourRelatif
 rm(jourRelatif)
 jour<-vector();
 NbObjDeposeTot<-vector()
+NbObjDepose1<-vector()
+NbObjDepose2<-vector()
+NbObjDepose3<-vector()
+NbObjDepose4<-vector()
+NbObjDepose5<-vector()
 k<-1
 jour<-c(jour,JDepot[1,"jourRelatif"])#init j
 NbObjDeposeTot<-c(NbObjDeposeTot,0)
+NbObjDepose1<-c(NbObjDepose1,0)
+NbObjDepose2<-c(NbObjDepose2,0)
+NbObjDepose3<-c(NbObjDepose3,0)
+NbObjDepose4<-c(NbObjDepose4,0)
+NbObjDepose5<-c(NbObjDepose5,0)
 for(i in 1:nrow(JDepot)){
   if(JDepot[i,"jourRelatif"]==jour[k]){
     NbObjDeposeTot[k]<-NbObjDeposeTot[k]+1
+    if(JDepot[i,"typeD"]==1){
+    NbObjDepose1[k]<-NbObjDepose1[k]+1}
+    if(JDepot[i,"typeD"]==2){
+    NbObjDepose2[k]<-NbObjDepose2[k]+1}
+    if(JDepot[i,"typeD"]==3){
+    NbObjDepose3[k]<-NbObjDepose3[k]+1}
+    if(JDepot[i,"typeD"]==4){
+    NbObjDepose4[k]<-NbObjDepose4[k]+1}
+    if(JDepot[i,"typeD"]==5){
+    NbObjDepose5[k]<-NbObjDepose5[k]+1}
   }else{
     k<-k+1
     jour<-c(jour,JDepot[i,"jourRelatif"])
     NbObjDeposeTot<-c(NbObjDeposeTot,1)
+    if(JDepot[i,"typeD"]==1){
+      NbObjDepose1<-c(NbObjDepose1,1)
+      NbObjDepose2<-c(NbObjDepose2,0)
+      NbObjDepose3<-c(NbObjDepose3,0)
+      NbObjDepose4<-c(NbObjDepose4,0)
+      NbObjDepose5<-c(NbObjDepose5,0)}
+    if(JDepot[i,"typeD"]==2){
+      NbObjDepose1<-c(NbObjDepose1,0)
+      NbObjDepose2<-c(NbObjDepose2,1)
+      NbObjDepose3<-c(NbObjDepose3,0)
+      NbObjDepose4<-c(NbObjDepose4,0)
+      NbObjDepose5<-c(NbObjDepose5,0)}
+    if(JDepot[i,"typeD"]==3){
+      NbObjDepose1<-c(NbObjDepose1,0)
+      NbObjDepose2<-c(NbObjDepose2,0)
+      NbObjDepose3<-c(NbObjDepose3,1)
+      NbObjDepose4<-c(NbObjDepose4,0)
+      NbObjDepose5<-c(NbObjDepose5,0)}
+    if(JDepot[i,"typeD"]==4){
+      NbObjDepose1<-c(NbObjDepose1,0)
+      NbObjDepose2<-c(NbObjDepose2,0)
+      NbObjDepose3<-c(NbObjDepose3,0)
+      NbObjDepose4<-c(NbObjDepose4,1)
+      NbObjDepose5<-c(NbObjDepose5,0)}
+    if(JDepot[i,"typeD"]==5){
+      NbObjDepose1<-c(NbObjDepose1,0)
+      NbObjDepose2<-c(NbObjDepose2,0)
+      NbObjDepose3<-c(NbObjDepose3,0)
+      NbObjDepose4<-c(NbObjDepose4,0)
+      NbObjDepose5<-c(NbObjDepose5,1)}
   }
 }
-listeDepotsTotaux<-data.frame(jour,NbObjDeposeTot)
-rm(jour,NbObjDeposeTot)
+listeDepotsTotaux<-data.frame(jour,NbObjDeposeTot,NbObjDepose1,NbObjDepose2,NbObjDepose3,NbObjDepose4,NbObjDepose5)
+rm(jour)
 rm(k,i,j)
