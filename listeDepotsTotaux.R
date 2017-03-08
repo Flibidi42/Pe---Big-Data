@@ -11,4 +11,19 @@ for(i in 1:nrow(JDepot)){
   jourRelatif<-c(jourRelatif,j)
 }
 JDepot["jourRelatif"]<-jourRelatif
-
+rm(jourRelatif)
+jour<-vector();
+NbObjDepose<-vector()
+k<-1
+jour<-c(jour,JDepot[1,"jourRelatif"])#init j
+NbObjDepose<-c(NbObjDepose,0)
+for(i in 1:nrow(JDepot)){
+  if(JDepot[i,"jourRelatif"]==jour[k]){
+    NbObjDepose[k]<-NbObjDepose[k]+1
+  }else{
+    k<-k+1
+    jour<-c(jour,JDepot[i,"jourRelatif"])
+    NbObjDepose<-c(NbObjDepose,1)
+  }
+}
+listeDepotsTotaux<-data.frame(jour,NbObjDepose)

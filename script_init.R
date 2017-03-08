@@ -29,7 +29,7 @@ for(i in 1:nrow(my_data)){# On parcourt les différents relevés
     #TestList <- data.frame(UserId,,WasteSize,WasteType,DepotDate)
   }
 }
-
+rm(UserId,DepotLat,WasteSize,WasteType,DepotDate);
 #Info geo
 Latitude <- vector();
 Longitude <- vector();

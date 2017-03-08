@@ -6,13 +6,11 @@ IdContD<-vector();#Foreign key
 typeD<-vector();
 sizeD<-vector();
 DateD<-vector()
-k<-vector()
 for (i in 1:length(DepotListe)) {
   #Parcours de chaque requête
   if (is.null(DepotListe[[i]])) {
   }else{
     for (j in 1:nrow(DepotListe[[i]])) {
-      k <-c(k,length(k)+1);
       #Parcours de chaque dépot au sein de la requête
       if (is.na(DepotListe[[i]][j, "UserId"])) {#TODO : Compter la proportion de na au sein du set de donn�e
         print(DepotListe[[i]][j,"UserId"])
