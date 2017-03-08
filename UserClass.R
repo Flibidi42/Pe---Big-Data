@@ -1,4 +1,4 @@
-#Cr?ation UserList
+#Creation UserList
 
 UserClass <- data.frame()
 
