@@ -22,3 +22,5 @@ for (i in 1:length(DepotListe)) {
     }
   }
 }
+UserClass<-data.frame(UserList)
+rm(UserList)

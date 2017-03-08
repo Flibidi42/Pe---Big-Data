@@ -6,7 +6,7 @@ IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
 
 #Liste des dépots
 DepotListe <- list();
-l <- vector();
+#l <- vector();
 for(i in 1:nrow(my_data)){# On parcourt les différents relevés
   if(is.null(my_data[i,"containerDataList"][[1]])){ # cas où il n'y pas de dépot(NULL)
     DepotListe[[i]] <- NULL;
@@ -18,7 +18,7 @@ for(i in 1:nrow(my_data)){# On parcourt les différents relevés
     DepotDate <- vector(); #Vecteur de date de dépot
     DepotLat <- vector()
     for(j in 1:nrow(my_data[i,"containerDataList"][[1]])){ # On parcourt les différents dépots
-      l <-c(l,length(l)+1);
+      #l <-c(l,length(l)+1);
       UserId <- c(UserId, my_data[i,"containerDataList"][[1]][j,"userId"][,"$binary"]);
       WasteSize <- c(WasteSize, strtoi(my_data[i,"containerDataList"][[1]][j,"wasteSize"][1,1]));
       WasteType <- c(WasteType, strtoi(my_data[i,"containerDataList"][[1]][j,"wasteType"][1,1]));

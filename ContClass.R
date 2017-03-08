@@ -16,6 +16,6 @@ for(i in 1:length(ID_Conteneur)){
     }
   }
 }
-rm(Latitude)
-rm(Longitude)
 contClass <- data.frame(IDCont,LatitudeCont,LongitudeCont)
+rm(Latitude,Longitude)
+rm(LatitudeCont,LongitudeCont,IDCont)

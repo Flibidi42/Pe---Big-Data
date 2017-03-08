@@ -27,3 +27,5 @@ for(i in 1:nrow(JDepot)){
   }
 }
 listeDepotsTotaux<-data.frame(jour,NbObjDepose)
+rm(jour,NbObjDepose)
+rm(k,i,j)
