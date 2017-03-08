@@ -1,11 +1,11 @@
-#Création UserList
+#Cr?ation UserList
 
 UserClass <- data.frame()
 
 UserList <- vector()
 #Table des utilisateurs
 
-print("Création de la table des utilisateurs")
+print("Creation de la table des utilisateurs")
 for (i in 1:length(DepotListe)) {
   #Parcours de chaque requÃªte
   if (is.null(DepotListe[[i]])) {
