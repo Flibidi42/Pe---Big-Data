@@ -1,6 +1,6 @@
 #Jointure exprimant les dépot des utilisateurs en fonction des conteneurs
 
-IdD<-vector();#Primary key
+#IdD<-vector();#Primary key
 IdUserD<-vector();#Foreign key
 IdContD<-vector();#Foreign key
 typeD<-vector();
@@ -19,7 +19,7 @@ for (i in 1:length(DepotListe)) {
       }else if(substring(as.character(DepotListe[[i]][j,"DepotDate"]),1,4)<"2015"){#Hypothèse: les mesures commencent au 1er janvier 2015
         print(as.character(DepotListe[[i]][j,"DepotDate"]));
       }else{
-        IdD <-c(IdD,length(IdD)+1);
+        #IdD <-c(IdD,length(IdD)+1);
         IdUserD <- c(IdUserD, as.character(DepotListe[[i]][j, "UserId"]))
         IdContD <- c(IdContD,as.character(ID_Conteneur[i]))
         sizeD <- c(sizeD, as.character(DepotListe[[i]][j, "WasteSize"]))
@@ -31,5 +31,7 @@ for (i in 1:length(DepotListe)) {
   }
 }
 
-JDepot<-data.frame(IdD,IdUserD,IdContD,sizeD,typeD,DateD)
+JDepot<-data.frame(IdUserD,IdContD,sizeD,typeD,DateD)
 JDepot<-JDepot[order(JDepot$DateD),]
+#Vecteur définissant les dates et les jours associés.
+
