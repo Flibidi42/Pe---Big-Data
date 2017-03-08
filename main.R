@@ -1,9 +1,9 @@
 #Main execution file
 
-source('~/Desktop/terradona/Terradona_init/script_init.R')
-source('~/Desktop/terradona/Terradona_init/UserClass.R')
-source('~/Desktop/terradona/Terradona_init/ContClass.R')
-source('~/Desktop/terradona/Terradona_init/JointureDepot.R')
+source(string_path_script_init)
+source(string_path_UserClass)
+source(string_path_contClass)
+source(string_path_JointureDepot)
 
 library(ggmap)
 library(mapproj)

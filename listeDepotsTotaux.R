@@ -1,4 +1,4 @@
-#Formatage de l'entrée des séries temporelles #1
+#Formatage de l'entr?e des s?ries temporelles #1
 
 #ListeDepotsTotaux<-data.frame();
 jourRelatif<-vector();
@@ -27,3 +27,4 @@ for(i in 1:nrow(JDepot)){
   }
 }
 listeDepotsTotaux<-data.frame(jour,NbObjDepose)
+listeDepotsTotaux
