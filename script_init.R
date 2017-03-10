@@ -1,5 +1,9 @@
 library(jsonlite)
-my_data <- fromJSON(string_path_valeurs);
+
+path_json <- "sample_69.json";
+
+#Si le fichier est bien formaté
+my_data <- fromJSON(path_json);
 
 #Id conteneur
 IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
@@ -7,7 +11,7 @@ IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
 #Liste des d?pots
 DepotListe <- list();
 for(i in 1:nrow(my_data)){# On parcourt les diff?rents relev?s
-  if(is.null(my_data[i,"containerDataList"][[1]])){ # cas o? il n'y pas de d?pot(NULL)
+  if(is.null(my_data[i,"containerDataList"][[1]])){ # cas ou il n'y pas de depot(NULL)
     DepotListe[[i]] <- NULL;
   }
   else{
@@ -35,7 +39,7 @@ ID_Conteneur <- vector();
 for(i in 1:nrow(my_data)){
   Latitude <- c(Latitude, my_data$containerInfoList[[i]]$latitude[length(my_data$containerInfoList[[i]]$latitude)]);
   Longitude <- c(Longitude, my_data$containerInfoList[[i]]$longitude[length(my_data$containerInfoList[[i]]$longitude)]);
-  ID_Conteneur<- c(ID_Conteneur,my_data$containerInfoList[[i]]$serialNumber[length(my_data$containerInfoList[[i]]$serialNumber)])
+  ID_Conteneur<- c(ID_Conteneur,my_data$containerInfoList[[i]]$serialNumber[length(my_data$containerInfoList[[i]]$serialNumber)]);
 }
 
 #Date
