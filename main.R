@@ -1,5 +1,6 @@
 #Main execution file
 
+source("constantes.R")
 source(string_path_script_init)
 source(string_path_UserClass)
 source(string_path_contClass)
