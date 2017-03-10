@@ -1,9 +1,9 @@
 #Main execution file
 
-source("script_init.R")
-source("UserClass.R")
-source("ContClass.R")
-source("JointureDepot.R")
+source(string_path_script_init)
+source(string_path_UserClass)
+source(string_path_contClass)
+source(string_path_JointureDepot)
 
 library(ggmap)
 library(mapproj)

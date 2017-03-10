@@ -31,5 +31,6 @@ for (i in 1:length(DepotListe)) {
 
 JDepot<-data.frame(IdUserD,IdContD,sizeD,typeD,DateD)
 JDepot<-JDepot[order(JDepot$DateD),]
-#Vecteur definissant les dates et les jours associes.
+rm(IdUserD,IdContD,sizeD,typeD,DateD)
+#Vecteur définissant les dates et les jours associés.
 

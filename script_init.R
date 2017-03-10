@@ -1,17 +1,15 @@
 library(jsonlite)
+
 path_json <- "sample_69.json";
 
 #Si le fichier est bien formaté
 my_data <- fromJSON(path_json);
-#Sinon
-#source('ReformatJson.R');
 
 #Id conteneur
 IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
 
 #Liste des d?pots
 DepotListe <- list();
-l <- vector();
 for(i in 1:nrow(my_data)){# On parcourt les diff?rents relev?s
   if(is.null(my_data[i,"containerDataList"][[1]])){ # cas ou il n'y pas de depot(NULL)
     DepotListe[[i]] <- NULL;
@@ -23,7 +21,6 @@ for(i in 1:nrow(my_data)){# On parcourt les diff?rents relev?s
     DepotDate <- vector(); #Vecteur de date de d?pot
     DepotLat <- vector()
     for(j in 1:nrow(my_data[i,"containerDataList"][[1]])){ # On parcourt les diff?rents d?pots
-      l <-c(l,length(l)+1);
       UserId <- c(UserId, my_data[i,"containerDataList"][[1]][j,"userId"][,"$binary"]);
       WasteSize <- c(WasteSize, strtoi(my_data[i,"containerDataList"][[1]][j,"wasteSize"][1,1]));
       WasteType <- c(WasteType, strtoi(my_data[i,"containerDataList"][[1]][j,"wasteType"][1,1]));
