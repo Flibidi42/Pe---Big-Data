@@ -1,6 +1,7 @@
 #Main execution file
 
-source("constantes.R")
+source('C:/Users/philippe/Desktop/3A/PE/R/NouveauDossier/constantes.R')
+print("constantes.R")
 source(string_path_script_init)
 source(string_path_UserClass)
 source(string_path_contClass)

@@ -1,9 +1,9 @@
 library(jsonlite)
 
-path_json <- "sample_69.json";
+#path_json <- "sample_69.json";
 
 #Si le fichier est bien formaté
-my_data <- fromJSON(path_json);
+my_data <- fromJSON(string_path_valeurs);
 
 #Id conteneur
 IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
