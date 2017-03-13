@@ -3,10 +3,11 @@
 #ListeDepotsTotaux<-data.frame();
 
 jourRelatif<-list();
-calendar<-seq(as.Date(JDepot[[1]][1,"DateD"]), as.Date("2020-12-31"), by="days")#(JDepot[[length(JDepot)]][nrow(JDepot[[length(JDepot)]]),"DateD"])
+# calendar<-seq(as.Date(JDepot[[1]][1,"DateD"]), as.Date("2020-12-31"), by="days")#(JDepot[[length(JDepot)]][nrow(JDepot[[length(JDepot)]]),"DateD"])
 print("step1")
 debut<-as.Date(JDepot[[1]][1,"DateD"])-as.Date.POSIXct(as.Date("2001-01-01"))
 MinDate<-vector()
+startDate<-as.Date("2100-12-31")
 for(l in 1:length(JDepot)){
   if(nrow(JDepot[[l]])>0){
     if(as.numeric(startDate-as.Date(JDepot[[l]][1,"DateD"]))>0){

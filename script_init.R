@@ -3,7 +3,7 @@ library(jsonlite)
 #path_json <- "sample_69.json";
 
 #Si le fichier est bien formaté
-my_data <- fromJSON(string_path_valeurs);
+my_data <- stream_in(file(string_path_valeurs));
 
 #Id conteneur
 IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;

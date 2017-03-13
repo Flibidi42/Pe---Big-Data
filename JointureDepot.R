@@ -14,6 +14,7 @@ for (i in 1:nrow(contClass)){#Initialisation de la liste
 }
 #print("exit")
 for (i in 1:length(DepotListe)) {
+  print(i)
   IdUserD<-vector();#Foreign key
   IdContD<-vector();#Foreign key
   typeD<-vector();
@@ -28,8 +29,10 @@ for (i in 1:length(DepotListe)) {
         #Parcours de chaque dépot au sein de la requête
         if (is.na(DepotListe[[i]][j, "UserId"])) {#TODO : Compter la proportion de na au sein du set de donn?e
           #print(DepotListe[[i]][j,"UserId"])
-        }else if(substring(as.character(DepotListe[[i]][j,"DepotDate"]),1,4)<"2015"){#Hypothese: les mesures commencent au 1er janvier 2015
-          #print(as.character(DepotListe[[i]][j,"DepotDate"]));
+        }else if(is.na(as.character(DepotListe[[i]][j,"DepotDate"]))){#Hypothese: les mesures commencent au 1er janvier 2015
+          print(cat(i,j,"DepotDate = N/A"))
+        }else if(substring(as.character(DepotListe[[i]][j,"DepotDate"]),1,4)<"2015"){
+          
         }else{
           #IdD <-c(IdD,length(IdD)+1);
           #print("coucou")
@@ -49,4 +52,4 @@ JDepot[[i]]<-JDepot[[i]][order(JDepot[[i]]$DateD),]
 }
 #rm(IdUserD,IdContD,sizeD,typeD,DateD)
 #Vecteur definissant les dates et les jours associ?s.
-Rprof()
+#Rprof()
