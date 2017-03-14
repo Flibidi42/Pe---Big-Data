@@ -13,9 +13,7 @@ for (i in 1:length(DepotListe)) {
     for (j in 1:nrow(DepotListe[[i]])) {
       #Parcours de chaque dépot au sein de la requête
       if (is.na(DepotListe[[i]][j, "UserId"])) {#TODO : Compter la proportion de na au sein du set de donn?e
-        print(DepotListe[[i]][j,"UserId"])
       }else if(substring(as.character(DepotListe[[i]][j,"DepotDate"]),1,4)<"2015"){#Hypothese: les mesures commencent au 1er janvier 2015
-        print(as.character(DepotListe[[i]][j,"DepotDate"]));
       }else{
         #IdD <-c(IdD,length(IdD)+1);
         IdUserD <- c(IdUserD, as.character(DepotListe[[i]][j, "UserId"]))

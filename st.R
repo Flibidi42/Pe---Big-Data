@@ -19,3 +19,4 @@ listeDepotsTotauxMatrice <- data.matrix(listeDepotsTotauxAvecFrequenceConstante[
 listeDepotsTotauxMatrice
 listeDepotsTotauxSerieTemporelle = ts(listeDepotsTotauxMatrice)
 plot.ts(listeDepotsTotauxMatrice)
+memory.limit()

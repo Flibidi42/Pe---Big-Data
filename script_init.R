@@ -1,16 +1,16 @@
 library(jsonlite)
 
-path_json <- "sample_69.json";
+path_json <- "/home/chanut/Desktop/terradona/cliiink_prod.gsmdata.json";
 
-#Si le fichier est bien formaté
-my_data <- fromJSON(path_json);
-
+#Si le fichier est bien format
+my_data <- stream_in(file(path_json), pagesize = 10000);
+print("stream _ in termine")
 #Id conteneur
 IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
 
 #Liste des d?pots
 DepotListe <- list();
-for(i in 1:nrow(my_data)){# On parcourt les diff?rents relev?s
+for(i in 1:nrow(my_data)){# On parcourt les diff?rents releves
   if(is.null(my_data[i,"containerDataList"][[1]])){ # cas ou il n'y pas de depot(NULL)
     DepotListe[[i]] <- NULL;
   }
