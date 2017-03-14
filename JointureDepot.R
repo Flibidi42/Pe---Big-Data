@@ -23,7 +23,7 @@ for (i in 1:length(DepotListe)) {
   #Parcours de chaque requete
   if (is.null(DepotListe[[i]])) {
   }else{
-    if(is.element(as.character(ID_Conteneur[i]),contClass$IDCont)){#Vérification de la validité des conteneurs
+    if(is.element(as.character(ID_Conteneur[i]),contClass$IDCont)){#V?rification de la validit? des conteneurs
       index<-grep(as.character(ID_Conteneur[i]),contClass$IDCont)
       for (j in 1:nrow(DepotListe[[i]])) {
         #Parcours de chaque dÃ©pot au sein de la requÃªte

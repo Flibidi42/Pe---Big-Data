@@ -1,8 +1,6 @@
 library(jsonlite)
 
-#path_json <- "sample_69.json";
 
-#Si le fichier est bien formaté
 my_data <- stream_in(file(string_path_valeurs));
 
 #Id conteneur
@@ -10,7 +8,7 @@ IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
 
 #Liste des d?pots
 DepotListe <- list();
-for(i in 1:nrow(my_data)){# On parcourt les diff?rents relev?s
+for(i in 1:nrow(my_data)){# On parcourt les diff?rents releves
   if(is.null(my_data[i,"containerDataList"][[1]])){ # cas ou il n'y pas de depot(NULL)
     DepotListe[[i]] <- NULL;
   }

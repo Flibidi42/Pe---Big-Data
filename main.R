@@ -3,9 +3,13 @@
 source('C:/Users/philippe/Desktop/3A/PE/R/NouveauDossier/constantes.R')
 print("constantes.R")
 source(string_path_script_init)
+print("string path script init")
 source(string_path_UserClass)
+print("source string path user class")
 source(string_path_contClass)
+print("source string path contClass")
 source(string_path_JointureDepot)
+print("source(string_path_JointureDepot)")
 
 library(ggmap)
 library(mapproj)

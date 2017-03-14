@@ -1,4 +1,4 @@
-#Formatage de l'entr?e des s?ries temporelles #1
+#Formatage de l'entree des series temporelles #1
 
 #ListeDepotsTotaux<-data.frame();
 
