@@ -14,7 +14,7 @@ for (i in 1:nrow(contClass)){#Initialisation de la liste
 }
 #print("exit")
 for (i in 1:length(DepotListe)) {
-  print(i)
+  # print(i)
   IdUserD<-vector();#Foreign key
   IdContD<-vector();#Foreign key
   typeD<-vector();
