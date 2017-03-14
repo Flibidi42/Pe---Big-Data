@@ -1,10 +1,8 @@
 library(jsonlite)
 
-path_json <- "/home/chanut/Desktop/terradona/cliiink_prod.gsmdata.json";
 
-#Si le fichier est bien format
-my_data <- stream_in(file(path_json), pagesize = 10000);
-print("stream _ in termine")
+my_data <- stream_in(file(string_path_valeurs));
+
 #Id conteneur
 IDs_conteneur <-  my_data$containerStatus$`_id`$`$oid`;
 

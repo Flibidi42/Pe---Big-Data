@@ -1,6 +1,7 @@
 #Main execution file
 
-source("~/Desktop/terradona/Terradona_init/constantes.R")
+source('C:/Users/philippe/Desktop/3A/PE/R/NouveauDossier/constantes.R')
+print("constantes.R")
 source(string_path_script_init)
 print("string path script init")
 source(string_path_UserClass)
