@@ -12,3 +12,4 @@ colnames(Table_clust_user_4h) <-
     "16h-20h",
     "20h-24h"
   )
+write.csv(Table_clust_user_4h, file="ClusteringUser4h.csv");
