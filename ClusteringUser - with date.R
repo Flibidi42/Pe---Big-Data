@@ -51,9 +51,9 @@ for (i in 1:nrow(Hours)) {
   
 }
 
-Table_clust_user <- data.frame(User, Hours)
+Table_clust_user_date <- data.frame(User, Hours);
 
-colnames(Table_clust_user) <-
+colnames(Table_clust_user_date) <-
   c(
     "UserId",
     "0h-2h",
