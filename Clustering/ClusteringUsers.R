@@ -23,13 +23,15 @@ for (j in 1:nrow(totaux_depots)) {
     
 }
 
-for (i in 1:nrow(Hours)) {
-  if(sum(Hours[i,] != 0))
-  Hours[i, ] <- Hours[i, ] * 100 / sum(Hours[i, ])
+Hours_pct <- Hours;
+
+for (i in 1:nrow(Hours_pct)) {
+  if(sum(Hours_pct[i,] != 0))
+  Hours_pct[i, ] <- Hours_pct[i, ] * 100 / sum(Hours_pct[i, ])
   
 }
 
-Table_clust_user <- data.frame(User, Hours)
+Table_clust_user <- data.frame(User, Hours_pct)
 
 colnames(Table_clust_user) <-
   c(
@@ -48,17 +50,36 @@ colnames(Table_clust_user) <-
     "22h-0h"
   )
 
-rm(User, Hours)
 
-write.csv(Table_clust_user, file = "Table_user.csv")
+write.csv(Table_clust_user, file = "Clustering/ClusteringUsers.csv")
 
-hc_fit <- hclust(dist(Table_clust_user[,2:13]), method="ave");
+Hours_pct <- Hours[-rowSums(Hours) < 100,];
 
-Table_clust_user_plus_100 <- Table_clust_user;
-for(i in 1:nrow(Table_clust_user)){
-  if(sum(Table_clust_user[i,2:13]) < 100){
-    Table_clust_user_plus_100 <- Table_clust_user_plus_100[-i,];
-  }
+for (i in 1:nrow(Hours_pct)) {
+  if(sum(Hours_pct[i,] != 0))
+    Hours_pct[i, ] <- Hours_pct[i, ] * 100 / sum(Hours_pct[i, ])
+  
 }
 
-write.csv(Table_clust_user_plus_100, file = "Table_user2.csv")
+Table_clust_user_plus_100 <- data.frame(User, Hours_pct);
+colnames(Table_clust_user) <-
+  c(
+    "UserId",
+    "0h-2h",
+    "2h-4h",
+    "4h-6h",
+    "6h-8h",
+    "8h-10h",
+    "10h-12h",
+    "12h-14h",
+    "14h-16h",
+    "16h-18h",
+    "18h-20h",
+    "20h-22h",
+    "22h-0h"
+  )
+
+write.csv(Table_clust_user_plus_100, file = "Clustering/ClusteringUsers+100.csv")
+
+
+rm(User, Hours, Hours_pct)

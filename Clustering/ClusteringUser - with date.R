@@ -71,4 +71,5 @@ colnames(Table_clust_user_date) <-
     "22h-0h"
   )
 
-rm(User, Hours)
+rm(User, Hours);
+write.csv(file = "Clustering/ClusteringUsersWithDate.csv", x =Table_clust_user_date)
