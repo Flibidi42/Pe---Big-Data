@@ -9,6 +9,10 @@ Id <- character()
 
 
 for (j in 1:nrow(totaux_depots)) {
+  
+  if(j%%10000 == 0){
+    print (paste("Avancement : ", as.character(round((j/nrow(totaux_depots))*100), 2), " %"));
+  }
   Id <- as.character(totaux_depots[j, "IdUserD"])
   
   
@@ -45,15 +49,18 @@ for (j in 1:nrow(totaux_depots)) {
   
 }
 
+User <- User[rowSums(Hours)>50];
 Hours <- Hours[rowSums(Hours)>50,];
 
-for (i in 1:nrow(Hours)) {
-  if (sum(Hours[i, ] != 0))
-    Hours[i,] <- Hours[i,] * 100 / sum(Hours[i,])
+Hours_pct <- Hours;
+
+for (i in 1:nrow(Hours_pct)) {
+  if (sum(Hours_pct[i, ] != 0))
+    Hours_pct[i,] <- Hours_pct[i,] * 100 / sum(Hours_pct[i,])
   
 }
 
-Table_clust_user_date <- data.frame(User, Hours);
+Table_clust_user_date <- data.frame(User, Hours_pct);
 Table_clust_user_date <- Table_clust_user_date[Table_clust_user_date[,1]!="AAAAAAAAAAA=",]
 
 colnames(Table_clust_user_date) <-
