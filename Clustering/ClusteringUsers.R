@@ -53,7 +53,8 @@ colnames(Table_clust_user) <-
 
 write.csv(Table_clust_user, file = "Clustering/ClusteringUsers.csv")
 
-Hours_pct <- Hours[-rowSums(Hours) < 100,];
+Hours_pct <- Hours[rowSums(Hours) >= 80,];
+User <- User[rowSums(Hours) >= 80];
 
 for (i in 1:nrow(Hours_pct)) {
   if(sum(Hours_pct[i,] != 0))
@@ -62,7 +63,7 @@ for (i in 1:nrow(Hours_pct)) {
 }
 
 Table_clust_user_plus_100 <- data.frame(User, Hours_pct);
-colnames(Table_clust_user) <-
+colnames(Table_clust_user_plus_100) <-
   c(
     "UserId",
     "0h-2h",
@@ -80,6 +81,3 @@ colnames(Table_clust_user) <-
   )
 
 write.csv(Table_clust_user_plus_100, file = "Clustering/ClusteringUsers+100.csv")
-
-
-rm(User, Hours, Hours_pct)

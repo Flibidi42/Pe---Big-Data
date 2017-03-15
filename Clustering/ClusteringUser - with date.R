@@ -45,6 +45,8 @@ for (j in 1:nrow(totaux_depots)) {
   
 }
 
+Hours <- Hours[rowSums(Hours[,2:13])>100,];
+
 for (i in 1:nrow(Hours)) {
   if (sum(Hours[i, ] != 0))
     Hours[i,] <- Hours[i,] * 100 / sum(Hours[i,])
