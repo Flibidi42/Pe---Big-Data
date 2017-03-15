@@ -1,4 +1,4 @@
-str_path ="/home/chanut/Desktop/terradona/JDepotBis/"
+str_path ="JDepotBis/"
 str_file_name ="JdepotCSVwCont"
 my_data_ok <- list()
 
@@ -14,3 +14,4 @@ for(i in 1:79){
   totaux_depots <- rbind(totaux_depots, my_data_ok[[i]])
 }
 
+rm(my_data_ok);
