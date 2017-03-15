@@ -8,26 +8,19 @@ Id <- character()
 
 
 for (j in 1:nrow(totaux_depots)) {
-  if (j == 321) {
-    print("test")
-    
-  }
   Id <- as.character(totaux_depots[j, "IdUserD"])
   
-  if (Id %in% User) {
+  if (!(Id %in% User)) {
+    User <- c(User, Id)
+    
+    Hours <- rbind(Hours, seq(0, 0, length.out = 12))
+  }
     t <-
       as.POSIXlt(strptime(as.character(totaux_depots[j, "DateD"]), format = "%F %H:%M:%S"))
     
     Hours[which(User == Id), (t$hour / 2) + 1] <-
       Hours[which(User == Id), (t$hour / 2) + 1] + 1
     
-  }
-  else{
-    User <- c(User, Id)
-    
-    Hours <- rbind(Hours, seq(0, 0, length.out = 12))
-    
-  }
 }
 
 for (i in 1:nrow(Hours)) {
