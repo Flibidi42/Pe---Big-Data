@@ -52,6 +52,7 @@ for (i in 1:nrow(Hours)) {
 }
 
 Table_clust_user_date <- data.frame(User, Hours);
+Table_clust_user_date <- Table_clust_user_date[Table_clust_user_date[,1]!="AAAAAAAAAAA=",]
 
 colnames(Table_clust_user_date) <-
   c(
