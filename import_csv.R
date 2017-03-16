@@ -13,5 +13,5 @@ totaux_depots <- data.frame()
 for(i in 1:79){
   totaux_depots <- rbind(totaux_depots, my_data_ok[[i]])
 }
-
+totaux_depots<-totaux_depots[order(totaux_depots$DateD),]
 rm(my_data_ok);

@@ -24,9 +24,6 @@ for (j in 1:nrow(totaux_depots_date)) {
   }
   Id <- as.character(totaux_depots_date[j, "IdUserD"])
   
-  if(j == 504058){
-    print("test");
-  }
   t <-
     as.POSIXlt(strptime(as.character(totaux_depots_date[j, "DateD"]), format = "%F %H:%M:%S"))
   
