@@ -6,7 +6,7 @@ theDate <- start
 selected_data_temp <- data.frame() 
 selected_data <- data.frame()
 vctr_sum_deposits <- vector()
-vctr_date <- data.frame()
+vctr_date <- vector()
 selected_data_temp <- data.frame()
 v<-vector()
 d<-vector()
