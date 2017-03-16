@@ -36,22 +36,3 @@ selected_monday <- nrow( subset(totaux_depots, weekdays(as.Date(DateD)) == "same
 jours <- c(jours, selected_monday)
 selected_monday <- nrow( subset(totaux_depots, weekdays(as.Date(DateD)) == "dimanche" & start<=as.Date(DateD) & as.Date(DateD) <= end ))
 jours <- c(jours, selected_monday)
-
-vecteur_ma_selection <- vctr_sum_deposits[5:410]
-ma_selection_vecteur <- c(ma_selection_vecteur)
-matrice_selection <- matrix(vecteur_ma_selection, ncol=7)
-matrice_selection[[1,1]]
-class(matrice_selection)
-matrice_selection_2 <- matrix(nrow = nrow(matrice_selection), ncol = ncol(matrice_selection))
-for(i in 1:nrow(matrice_selection)){
-  for(j in 1:ncol(matrice_selection)){
-    matrice_selection_2[i,j]<-matrice_selection[[i,j]]  
-  }
-}
-matrice_selection_2
-
-somme = colSums(matrice_selection)
-vecteur_ma_selection
-vctr_sum_deposits
-plot(jours)
-plot(somme)
