@@ -18,7 +18,7 @@ while(theDate <= end){
   print(theDate)
   theDate <- theDate+1
 }
-#vÃ©rification
+#v�©rification
 theDate <- start
 selected_monday <-data.frame()
 vctr_sum_deposits_onmonday <- vector()
