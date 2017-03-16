@@ -5,7 +5,7 @@ end   <- as.Date("2017-03-02")
 theDate <- start
 selected_data_temp <- data.frame() 
 selected_data <- data.frame()
-vctr_sum_deposits <- data.frame()
+vctr_sum_deposits <- vector()
 vctr_date <- data.frame()
 selected_data_temp <- data.frame()
 
@@ -18,7 +18,7 @@ while(theDate <= end){
   print(theDate)
   theDate <- theDate+1
 }
-#vÃ©rification
+#v�©rification
 theDate <- start
 selected_monday <-data.frame()
 vctr_sum_deposits_onmonday <- vector()
