@@ -11,7 +11,7 @@ selected_data_temp <- data.frame()
 
 #**** selection de tous les depots pour chaque jour de la periode entre les deux dates
 while(theDate <= end){
-  vector_boolean <- as.Date(totaux_depots$DateD) == theDate
+  vector_boolean <- totaux_depots$DateD == theDate
   vector_boolean
   vctr_sum_deposits <- c(vctr_sum_deposits,as.numeric(table(vector_boolean)["TRUE"]))
   vctr_date <- c(vctr_date, theDate)
