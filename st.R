@@ -5,7 +5,7 @@ end   <- as.Date("2017-03-02")
 theDate <- start
 selected_data_temp <- data.frame() 
 selected_data <- data.frame()
-vctr_sum_deposits <- data.frame()
+vctr_sum_deposits <- vector()
 vctr_date <- data.frame()
 selected_data_temp <- data.frame()
 
