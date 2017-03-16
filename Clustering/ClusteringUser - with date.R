@@ -5,21 +5,28 @@ t <- as.POSIXlt(Sys.time())
 
 Id <- character()
 
-date_en_cours <- (t$year - 1) * 365 + t$yday;
-heure_en_cours <- floor(t$hour / 2);
-User_en_cours <- vector();
+date_en_cours <- (t$year - 1) * 365 + t$yday
 
-totaux_depots_date <- totaux_depots[totaux_depots$IdUserD != "AAAAAAAAAAA=",]
-totaux_depots_date <- totaux_depots_date[order(as.POSIXlt(
-  strptime(as.character(totaux_depots_date[, "DateD"]), format = "%F %H:%M:%S"))),];
+heure_en_cours <- floor(t$hour / 2)
 
-pb <- txtProgressBar(title = "progress bar", min = 0,
-                    max = nrow(totaux_depots_date));
+User_en_cours <- vector()
+
+
+totaux_depots_date <-
+  totaux_depots[totaux_depots$IdUserD != "AAAAAAAAAAA=", ]
+totaux_depots_date <- totaux_depots_date[order(as.POSIXlt(strptime(
+  as.character(totaux_depots_date[, "DateD"]), format = "%F %H:%M:%S"
+))), ]
+
+
+pb <- txtProgressBar(title = "progress bar",
+                     min = 0,
+                     max = nrow(totaux_depots_date))
+
 
 
 for (j in 1:nrow(totaux_depots_date)) {
-  
-  if(j%%1000 == 0){
+  if (j %% 1000 == 0) {
     setTxtProgressBar(pb, j)
   }
   Id <- as.character(totaux_depots_date[j, "IdUserD"])
@@ -27,24 +34,31 @@ for (j in 1:nrow(totaux_depots_date)) {
   t <-
     as.POSIXlt(strptime(as.character(totaux_depots_date[j, "DateD"]), format = "%F %H:%M:%S"))
   
-  if(is.na(t)){
-    next;
+  if (is.na(t)) {
+    next
+    
   }
   
-  if(Id %in% User_en_cours && ((t$year - 1) * 365 + t$yday) == date_en_cours 
-     && floor(t$hour / 2) == heure_en_cours){
-    next;
+  if (Id %in% User_en_cours &&
+      ((t$year - 1) * 365 + t$yday) == date_en_cours
+      && floor(t$hour / 2) == heure_en_cours) {
+    next
+    
   }
-  else if(((t$year - 1) * 365 + t$yday) != date_en_cours 
-          || floor(t$hour / 2) != heure_en_cours){
-    User_en_cours = vector();
+  else if (((t$year - 1) * 365 + t$yday) != date_en_cours
+           || floor(t$hour / 2) != heure_en_cours) {
+    User_en_cours = vector()
+    
   }
   else{
-    User_en_cours = c(User_en_cours, Id);
-  }
+    User_en_cours = c(User_en_cours, Id)
     
-  date_en_cours = (t$year - 1) * 365 + t$yday;
-  heure_en_cours = floor(t$hour / 2);
+  }
+  
+  date_en_cours = (t$year - 1) * 365 + t$yday
+  
+  heure_en_cours = floor(t$hour / 2)
+  
   
   
   if (!(Id %in% User)) {
@@ -65,16 +79,19 @@ for (j in 1:nrow(totaux_depots_date)) {
 #User <- User[rowSums(Hours)>20];
 #Hours <- Hours[rowSums(Hours)>20,];
 
-Hours_pct <- Hours;
+Hours_pct <- Hours
+
 
 for (i in 1:nrow(Hours_pct)) {
-  if (sum(Hours_pct[i, ] != 0))
-    Hours_pct[i,] <- Hours_pct[i,] * 100 / sum(Hours_pct[i,])
+  if (sum(Hours_pct[i,] != 0))
+    Hours_pct[i, ] <- Hours_pct[i, ] * 100 / sum(Hours_pct[i, ])
   
 }
 
-Table_clust_user_date <- data.frame(User, Hours_pct);
-Table_clust_user_date <- Table_clust_user_date[Table_clust_user_date[,1]!="AAAAAAAAAAA=",]
+Table_clust_user_date <- data.frame(User, Hours_pct)
+
+Table_clust_user_date <-
+  Table_clust_user_date[Table_clust_user_date[, 1] != "AAAAAAAAAAA=", ]
 
 colnames(Table_clust_user_date) <-
   c(
@@ -93,5 +110,6 @@ colnames(Table_clust_user_date) <-
     "22h-0h"
   )
 
-rm(User, Hours);
-write.csv(file = "Clustering/ClusteringUsersWithDate.csv", x =Table_clust_user_date)
+rm(User, Hours)
+
+write.csv(file = "Clustering/ClusteringUsersWithDate.csv", x = Table_clust_user_date)

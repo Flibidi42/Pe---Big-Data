@@ -15,19 +15,20 @@ for (j in 1:nrow(totaux_depots)) {
     
     Hours <- rbind(Hours, seq(0, 0, length.out = 12))
   }
-    t <-
-      as.POSIXlt(strptime(as.character(totaux_depots[j, "DateD"]), format = "%F %H:%M:%S"))
-    
-    Hours[which(User == Id), (t$hour / 2) + 1] <-
-      Hours[which(User == Id), (t$hour / 2) + 1] + 1
-    
+  t <-
+    as.POSIXlt(strptime(as.character(totaux_depots[j, "DateD"]), format = "%F %H:%M:%S"))
+  
+  Hours[which(User == Id), (t$hour / 2) + 1] <-
+    Hours[which(User == Id), (t$hour / 2) + 1] + 1
+  
 }
 
-Hours_pct <- Hours;
+Hours_pct <- Hours
+
 
 for (i in 1:nrow(Hours_pct)) {
-  if(sum(Hours_pct[i,] != 0))
-  Hours_pct[i, ] <- Hours_pct[i, ] * 100 / sum(Hours_pct[i, ])
+  if (sum(Hours_pct[i, ] != 0))
+    Hours_pct[i,] <- Hours_pct[i,] * 100 / sum(Hours_pct[i,])
   
 }
 
@@ -53,16 +54,19 @@ colnames(Table_clust_user) <-
 
 write.csv(Table_clust_user, file = "Clustering/ClusteringUsers.csv")
 
-Hours_pct <- Hours[rowSums(Hours) >= 80,];
-User <- User[rowSums(Hours) >= 80];
+Hours_pct <- Hours[rowSums(Hours) >= 80, ]
+
+User <- User[rowSums(Hours) >= 80]
+
 
 for (i in 1:nrow(Hours_pct)) {
-  if(sum(Hours_pct[i,] != 0))
-    Hours_pct[i, ] <- Hours_pct[i, ] * 100 / sum(Hours_pct[i, ])
+  if (sum(Hours_pct[i, ] != 0))
+    Hours_pct[i,] <- Hours_pct[i,] * 100 / sum(Hours_pct[i,])
   
 }
 
-Table_clust_user_plus_100 <- data.frame(User, Hours_pct);
+Table_clust_user_plus_100 <- data.frame(User, Hours_pct)
+
 colnames(Table_clust_user_plus_100) <-
   c(
     "UserId",
