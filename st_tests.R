@@ -1,10 +1,7 @@
 #**** testons !!! 5-410
 vecteur_ma_selection <- vctr_sum_deposits[5:396]
-vctr_sum_deposits
-ma_selection_vecteur <- c(ma_selection_vecteur)
 matrice_selection <- matrix(vecteur_ma_selection, ncol=7)
-matrice_selection[[1,1]]
-class(matrice_selection)
+
 matrice_selection_2 <- matrix(nrow = nrow(matrice_selection), ncol = ncol(matrice_selection))
 for(i in 1:nrow(matrice_selection)){
   for(j in 1:ncol(matrice_selection)){
