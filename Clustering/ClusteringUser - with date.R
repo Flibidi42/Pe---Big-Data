@@ -1,24 +1,50 @@
 User <- vector()
-date_used <- list()
-
 
 Hours <- matrix(ncol = 12, nrow = 0)
 t <- as.POSIXlt(Sys.time())
 
 Id <- character()
 
+date_en_cours <- (t$year - 1) * 365 + t$yday;
+heure_en_cours <- floor(t$hour / 2);
+User_en_cours <- vector();
 
-for (j in 1:nrow(totaux_depots)) {
+totaux_depots_date <- totaux_depots[totaux_depots$IdUserD != "AAAAAAAAAAA=",]
+totaux_depots_date <- totaux_depots_date[order(as.POSIXlt(
+  strptime(as.character(totaux_depots_date[, "DateD"]), format = "%F %H:%M:%S"))),];
+
+pb <- txtProgressBar(title = "progress bar", min = 0,
+                    max = nrow(totaux_depots_date));
+
+
+for (j in 1:nrow(totaux_depots_date)) {
   
-  if(j%%10000 == 0){
-    print (paste("Avancement : ", as.character(round((j/nrow(totaux_depots))*100), 2), " %"));
+  if(j%%1000 == 0){
+    setTxtProgressBar(pb, j)
   }
-  Id <- as.character(totaux_depots[j, "IdUserD"])
-  
+  Id <- as.character(totaux_depots_date[j, "IdUserD"])
   
   t <-
-    as.POSIXlt(strptime(as.character(totaux_depots[j, "DateD"]), format = "%F %H:%M:%S"))
+    as.POSIXlt(strptime(as.character(totaux_depots_date[j, "DateD"]), format = "%F %H:%M:%S"))
   
+  if(is.na(t)){
+    next;
+  }
+  
+  if(Id %in% User_en_cours && ((t$year - 1) * 365 + t$yday) == date_en_cours 
+     && floor(t$hour / 2) == heure_en_cours){
+    next;
+  }
+  else if(((t$year - 1) * 365 + t$yday) != date_en_cours 
+          || floor(t$hour / 2) != heure_en_cours){
+    User_en_cours = vector();
+  }
+  else{
+    User_en_cours = c(User_en_cours, Id);
+  }
+    
+  date_en_cours = (t$year - 1) * 365 + t$yday;
+  heure_en_cours = floor(t$hour / 2);
   
   
   if (!(Id %in% User)) {
@@ -30,27 +56,14 @@ for (j in 1:nrow(totaux_depots)) {
     
   }
   
-  d <- date_used[[which(User == Id)]]
-  
-  
-  if (Position(function(x)
-    identical(x, c((t$year - 1) * 365 + t$yday, floor(t$hour / 2) + 1
-    )),
-    t, nomatch = 0) == 0) {
-    Hours[which(User == Id), floor(t$hour / 2) + 1] <-
-      Hours[which(User == Id), floor(t$hour / 2) + 1] + 1
-    date_used[[which(User == Id)]] <-
-      c(d,
-        c((t$year - 1) * 365 + t$yday,
-          floor(t$hour / 2)))
-    
-  }
+  Hours[which(User == Id), (t$hour / 2) + 1] <-
+    Hours[which(User == Id), (t$hour / 2) + 1] + 1
   
   
 }
 
-User <- User[rowSums(Hours)>50];
-Hours <- Hours[rowSums(Hours)>50,];
+#User <- User[rowSums(Hours)>20];
+#Hours <- Hours[rowSums(Hours)>20,];
 
 Hours_pct <- Hours;
 
