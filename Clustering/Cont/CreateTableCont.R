@@ -56,3 +56,7 @@ Table_clustering_cont <- data.frame(ID_Conteneur,
                                     Nb_dep_jr_mediane,
                                     Taille_moyenne,
                                     Nb_user_month)
+
+rm(ID_Conteneur, Nb_dep_jr_mediane, Nb_dep_jr_moyenne, Taille_moyenne, Nb_user_month, 
+   df_by_day, df_by_month, df_cont, res, aggreg);
+write.csv(Table_clustering_cont, "Clustering/Cont/ClusteringCont.csv")

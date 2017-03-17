@@ -112,4 +112,4 @@ colnames(Table_clust_user_date) <-
 
 rm(User, Hours)
 
-write.csv(file = "Clustering/ClusteringUsersWithDate.csv", x = Table_clust_user_date)
+write.csv(file = "Clustering/Users/ClusteringUsersWithDate.csv", x = Table_clust_user_date)
