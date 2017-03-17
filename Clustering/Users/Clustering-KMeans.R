@@ -1,10 +1,10 @@
-
+Table_to_clust <- Table_clust_user_4h
 
 #Clustering User Date
-k_fit <- kmeans(Table_clust_user_date[, 2:13], 2)
+k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 2)
 
 Table_clustered <-
-  data.frame(Table_clust_user_date$UserId, k_fit$cluster)
+  data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
 
@@ -33,10 +33,10 @@ for (i in 1:2) {
   
 }
 
-k_fit <- kmeans(Table_clust_user_date[, 2:13], 3)
+k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 3)
 
 Table_clustered <-
-  data.frame(Table_clust_user_date$UserId, k_fit$cluster)
+  data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
 
@@ -67,10 +67,10 @@ for (i in 1:3) {
   
 }
 
-k_fit <- kmeans(Table_clust_user_date[, 2:13], 4)
+k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 4)
 
 Table_clustered <-
-  data.frame(Table_clust_user_date$UserId, k_fit$cluster)
+  data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
 
@@ -103,10 +103,10 @@ for (i in 1:4) {
   
 }
 
-k_fit <- kmeans(Table_clust_user_date[, 2:13], 5)
+k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 5)
 
 Table_clustered <-
-  data.frame(Table_clust_user_date$UserId, k_fit$cluster)
+  data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
 

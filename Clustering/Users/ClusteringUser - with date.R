@@ -12,27 +12,27 @@ heure_en_cours <- floor(t$hour / 2)
 User_en_cours <- vector()
 
 
-totaux_depots_date <-
-  totaux_depots[totaux_depots$IdUserD != "AAAAAAAAAAA=", ]
-totaux_depots_date <- totaux_depots_date[order(as.POSIXlt(strptime(
-  as.character(totaux_depots_date[, "DateD"]), format = "%F %H:%M:%S"
+tot_dep_date <-
+  tot_dep[tot_dep$IdUserD != "AAAAAAAAAAA=", ]
+tot_dep_date <- tot_dep_date[order(as.POSIXlt(strptime(
+  as.character(tot_dep_date[, "DateD"]), format = "%F %H:%M:%S"
 ))), ]
 
 
 pb <- txtProgressBar(title = "progress bar",
                      min = 0,
-                     max = nrow(totaux_depots_date))
+                     max = nrow(tot_dep_date))
 
 
 
-for (j in 1:nrow(totaux_depots_date)) {
+for (j in 1:nrow(tot_dep_date)) {
   if (j %% 1000 == 0) {
     setTxtProgressBar(pb, j)
   }
-  Id <- as.character(totaux_depots_date[j, "IdUserD"])
+  Id <- as.character(tot_dep_date[j, "IdUserD"])
   
   t <-
-    as.POSIXlt(strptime(as.character(totaux_depots_date[j, "DateD"]), format = "%F %H:%M:%S"))
+    as.POSIXlt(strptime(as.character(tot_dep_date[j, "DateD"]), format = "%F %H:%M:%S"))
   
   if (is.na(t)) {
     next

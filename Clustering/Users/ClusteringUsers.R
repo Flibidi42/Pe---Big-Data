@@ -5,10 +5,17 @@ Hours <- matrix(ncol = 12, nrow = 0)
 t <- as.POSIXlt(Sys.time())
 
 Id <- character()
+pb <- txtProgressBar(title = "progress bar",
+                     min = 0,
+                     max = nrow(tot_dep))
 
 
-for (j in 1:nrow(totaux_depots)) {
-  Id <- as.character(totaux_depots[j, "IdUserD"])
+for (j in 1:nrow(tot_dep)) {
+  Id <- as.character(tot_dep[j, "IdUserD"])
+  
+  if (j %% 1000 == 0) {
+    setTxtProgressBar(pb, j)
+  }
   
   if (!(Id %in% User)) {
     User <- c(User, Id)
@@ -16,7 +23,7 @@ for (j in 1:nrow(totaux_depots)) {
     Hours <- rbind(Hours, seq(0, 0, length.out = 12))
   }
   t <-
-    as.POSIXlt(strptime(as.character(totaux_depots[j, "DateD"]), format = "%F %H:%M:%S"))
+    as.POSIXlt(strptime(as.character(tot_dep[j, "DateD"]), format = "%F %H:%M:%S"))
   
   Hours[which(User == Id), (t$hour / 2) + 1] <-
     Hours[which(User == Id), (t$hour / 2) + 1] + 1
