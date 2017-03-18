@@ -3,7 +3,7 @@ Table_to_clust <- Table_clust_user_4h
 #Clustering User Date
 k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 2)
 
-Table_clustered <-
+Table_clustered2 <-
   data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
@@ -27,7 +27,7 @@ for (i in 1:2) {
     "Groupe ",
     i ,
     " : ",
-    sum(Table_clustered == i) / nrow(Table_clustered) * 100,
+    sum(Table_clustered2 == i) / nrow(Table_clustered2) * 100,
     " %"
   ))
   
@@ -35,7 +35,7 @@ for (i in 1:2) {
 
 k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 3)
 
-Table_clustered <-
+Table_clustered3 <-
   data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
@@ -61,7 +61,7 @@ for (i in 1:3) {
     "Groupe ",
     i ,
     " : ",
-    sum(Table_clustered == i) / nrow(Table_clustered) * 100,
+    sum(Table_clustered3 == i) / nrow(Table_clustered3) * 100,
     " %"
   ))
   
@@ -69,7 +69,7 @@ for (i in 1:3) {
 
 k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 4)
 
-Table_clustered <-
+Table_clustered4 <-
   data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
@@ -97,7 +97,7 @@ for (i in 1:4) {
     "Groupe ",
     i ,
     " : ",
-    sum(Table_clustered == i) / nrow(Table_clustered) * 100,
+    sum(Table_clustered4 == i) / nrow(Table_clustered4) * 100,
     " %"
   ))
   
@@ -105,7 +105,7 @@ for (i in 1:4) {
 
 k_fit <- kmeans(Table_to_clust[, 2:ncol(Table_to_clust)], 5)
 
-Table_clustered <-
+Table_clustered5 <-
   data.frame(Table_to_clust$UserId, k_fit$cluster)
 
 m <- as.matrix(k_fit$centers)
@@ -135,7 +135,7 @@ for (i in 1:5) {
     "Groupe ",
     i ,
     " : ",
-    sum(Table_clustered == i) / nrow(Table_clustered) * 100,
+    sum(Table_clustered5 == i) / nrow(Table_clustered5) * 100,
     " %"
   ))
   

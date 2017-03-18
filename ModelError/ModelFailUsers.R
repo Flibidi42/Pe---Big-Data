@@ -1,5 +1,5 @@
 Taux_fail <- Table_error_users$Ratio
-seuil_refus <- 90
+seuil_refus <- 99.9
 Mean = mean(Taux_fail);
 Std_dev = sd(Taux_fail);
 valeur_test <- 0.08

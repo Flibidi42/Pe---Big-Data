@@ -3,6 +3,8 @@ User <- vector()
 Hours <- matrix(ncol = 12, nrow = 0)
 t <- as.POSIXlt(Sys.time())
 
+nb_depot_min <- 20
+
 Id <- character()
 
 date_en_cours <- (t$year - 1) * 365 + t$yday
@@ -76,10 +78,8 @@ for (j in 1:nrow(tot_dep_date)) {
   
 }
 
-#User <- User[rowSums(Hours)>20];
-#Hours <- Hours[rowSums(Hours)>20,];
-
-Hours_pct <- Hours
+User <- User[rowSums(Hours)>nb_depot_min];
+Hours <- Hours[rowSums(Hours)>nb_depot_min,];
 
 
 for (i in 1:nrow(Hours_pct)) {

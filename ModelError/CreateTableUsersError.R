@@ -8,7 +8,7 @@ Ratio <- vector()
 
 tot_dep_users <- vector()
 
-
+nb_depot_min <- 20
 
 un_user <- unique(as.character(tot_dep$IdUserD))
 
@@ -33,7 +33,7 @@ for (i in 1:length(un_user)) {
 Ratio <- Ratio / tot_dep_users
 to_remove <- vector();
 for(i in 1:length(tot_dep_users)){
-  if(tot_dep_users[i] <= 30){
+  if(tot_dep_users[i] <= nb_depot_min){
     to_remove <- c(to_remove, i)
   }
 }
