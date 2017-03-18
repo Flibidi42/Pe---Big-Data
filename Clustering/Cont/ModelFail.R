@@ -1,6 +1,6 @@
 nb_cont <- 79
-nb_min_depots <- 50
-seuil_refus <- 75
+nb_min_depots <- 30
+seuil_refus <- 80
 valeur_test <- 0.05
 Path_to_csvs <- "JDepotBis/JdepotCSVwCont"
 
@@ -32,13 +32,20 @@ Std_dev = sd(Taux_fail)
 Mean = mean(Taux_fail)
 
 
-f_norm <- dnorm(Taux_fail, Mean, Std_dev)
-
+#plot curve
 x <- seq(-0.5, 1, length.out = 1000)
-plot(Taux_fail, f_norm)
-points(x, dnorm(x, Mean, Std_dev), col = "red", type = "l")
-abline(v = qnorm(0.5 + seuil_refus / 200, Mean, Std_dev),
+plot(x, dnorm(x, Mean, Std_dev), col = "black", type = "l", xlim=c(-0.05,0.5))
+abline(v = qnorm(seuil_refus / 100, Mean, Std_dev),
        col = "blue")
+
+#Plot points
+x <- Taux_fail[Taux_fail>=qnorm(seuil_refus / 100, Mean, Std_dev)]
+f_norm <- dnorm(x, Mean, Std_dev);
+points(x, f_norm, col="red");
+x <- Taux_fail[Taux_fail<qnorm(seuil_refus / 100, Mean, Std_dev)]
+f_norm <- dnorm(x, Mean, Std_dev);
+points(x, f_norm, col="green");
+
 
 
 print("Exemple de validation :")
