@@ -36,10 +36,18 @@ for (i in 1:nrow(tot_dep)) {
   
 }
 # Rprof()
-Ratio <- Ratio / tot_dep_users
 
+Ratio <- Ratio / tot_dep_users
+to_remove <- vector();
+for(i in 1:length(tot_dep_users)){
+  if(tot_dep_users[i] <= 30){
+    to_remove <- c(to_remove, i)
+  }
+}
+Ratio <- Ratio[-to_remove];
+Users <- Users[-to_remove];
 
 Table_error_users <- data.frame(Users, Ratio)
 
 
-rm(Users, Ratio, tot_dep)
+rm(Users, Ratio, tot_dep, to_remove)
