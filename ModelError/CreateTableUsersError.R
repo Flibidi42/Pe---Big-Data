@@ -9,30 +9,23 @@ Ratio <- vector()
 tot_dep_users <- vector()
 
 
+
+un_user <- unique(tot_dep$IdUserD)
+
 pb <- txtProgressBar(title = "progress bar",
                      min = 0,
-                     max = nrow(tot_dep))
+                     max = length(un_user))
 # Rprof("tmp.out")
-for (i in 1:nrow(tot_dep)) {
-  if (i %% 1000 == 0){
+for (i in 1:length(un_user)) {
+  if (i %% 100 == 0){
     setTxtProgressBar(pb, i)
   }
   Id = as.character(tot_dep[i, ]$IdUserD);
-  if (!(Id %in% Users)) {
-    Users <- c(Users, Id)
+  Users <- c(Users, Id)
     
-    Ratio <- c(Ratio, 0)
-    
-    tot_dep_users <- c(tot_dep_users, 0)
-    
-  }
-  if (is.na(tot_dep[i, ]$typeD) | is.na(tot_dep[i, ]$sizeD) |
-      tot_dep[i, ]$typeD %in% c(0, 2, 3, 4, 5)) {
-    Ratio[Users == Id] <- Ratio[Users == Id] + 1
-    
-  }
-  tot_dep_users[Users == Id] <- tot_dep_users[Users == Id] + 1
-  
+  tot_dep_users <- c(tot_dep_users, nrow(tot_dep[tot_dep$IdUserD==Id,]))
+                     
+  Ratio <- c(Ratio, nrow(tot_dep[tot_dep$IdUserD==Id & tot_dep$typeD!=1,]));
   
 }
 # Rprof()
