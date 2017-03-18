@@ -10,7 +10,7 @@ tot_dep_users <- vector()
 
 
 
-un_user <- unique(tot_dep$IdUserD)
+un_user <- unique(as.character(tot_dep$IdUserD))
 
 pb <- txtProgressBar(title = "progress bar",
                      min = 0,
@@ -20,7 +20,7 @@ for (i in 1:length(un_user)) {
   if (i %% 100 == 0){
     setTxtProgressBar(pb, i)
   }
-  Id = as.character(tot_dep[i, ]$IdUserD);
+  Id = as.character(un_user[i]);
   Users <- c(Users, Id)
     
   tot_dep_users <- c(tot_dep_users, nrow(tot_dep[tot_dep$IdUserD==Id,]))

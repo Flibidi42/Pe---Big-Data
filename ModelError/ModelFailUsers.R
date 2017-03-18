@@ -36,6 +36,16 @@ if (100 * pnorm(valeur_test, Mean, Std_dev) < seuil_refus) {
   print("refus")
 }
 
-# print("Liste des users probelmatiques:");
+causes <- c("Erreur", "",  "Depot Invalide", "Dechet inconnu", "Fraude", "Mauvaise utilisation");
+Pb_User <- Table_error_users[Table_error_users$Ratio > qnorm(seuil_refus / 100, Mean, Std_dev),];
+Causes_pbs <- vector()
+
+
+for(i in 1:length(Pb_User)){
+  a <- tot_dep[tot_dep$typeD!=1 & as.character(tot_dep$IdUserD) == as.character(Pb_User[i,]$Users),]$typeD;
+  tt <- table (a);
+  Causes_pbs <- causes[which(tt==max(tt)) + 1];
+}
+  # print("Liste des users probelmatiques:");
 # print(Table_error_users[Table_error_users$Ratio > qnorm(seuil_refus / 100, Mean, Std_dev),])
-write.csv(Table_error_users[Table_error_users$Ratio > qnorm(seuil_refus / 100, Mean, Std_dev),],file = "UsersWithProblem.csv");
+write.csv(data.frame(Pb_User, Causes_pbs),file = "ModelError/UsersWithProblem.csv");
