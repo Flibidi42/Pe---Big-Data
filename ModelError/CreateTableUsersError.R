@@ -25,7 +25,7 @@ for (i in 1:length(un_user)) {
     
   tot_dep_users <- c(tot_dep_users, nrow(tot_dep[tot_dep$IdUserD==Id,]))
                      
-  Ratio <- c(Ratio, nrow(tot_dep[tot_dep$IdUserD==Id & tot_dep$typeD!=1,]));
+  Ratio <- c(Ratio, nrow(tot_dep[tot_dep$IdUserD==Id & (is.na(tot_dep$typeD) | tot_dep$typeD!=1),]));
   
 }
 # Rprof()
@@ -43,4 +43,4 @@ Users <- Users[-to_remove];
 Table_error_users <- data.frame(Users, Ratio)
 
 
-rm(Users, Ratio, tot_dep, to_remove)
+# rm(Users, Ratio, tot_dep, to_remove)

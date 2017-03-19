@@ -80,7 +80,7 @@ for (j in 1:nrow(tot_dep_date)) {
 
 User <- User[rowSums(Hours)>nb_depot_min];
 Hours <- Hours[rowSums(Hours)>nb_depot_min,];
-
+Hours_pct <- Hours;
 
 for (i in 1:nrow(Hours_pct)) {
   if (sum(Hours_pct[i,] != 0))

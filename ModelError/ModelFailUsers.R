@@ -1,5 +1,5 @@
 Taux_fail <- Table_error_users$Ratio
-seuil_refus <- 99.9
+seuil_refus <- 80
 Mean = mean(Taux_fail);
 Std_dev = sd(Taux_fail);
 valeur_test <- 0.08
@@ -41,10 +41,10 @@ Pb_User <- Table_error_users[Table_error_users$Ratio > qnorm(seuil_refus / 100, 
 Causes_pbs <- vector()
 
 
-for(i in 1:length(Pb_User)){
-  a <- tot_dep[tot_dep$typeD!=1 & as.character(tot_dep$IdUserD) == as.character(Pb_User[i,]$Users),]$typeD;
+for(i in 1:nrow(Pb_User)){
+  a <- tot_dep[tot_dep$typeD != 1 & as.character(tot_dep$IdUserD) == as.character(Pb_User[i,]$Users),]$typeD;
   tt <- table (a);
-  Causes_pbs <- causes[which(tt==max(tt)) + 1];
+  Causes_pbs <- c(Causes_pbs, causes[as.integer(names(which.max(tt))) + 1]);
 }
   # print("Liste des users probelmatiques:");
 # print(Table_error_users[Table_error_users$Ratio > qnorm(seuil_refus / 100, Mean, Std_dev),])
