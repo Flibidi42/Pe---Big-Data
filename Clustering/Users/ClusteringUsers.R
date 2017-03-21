@@ -4,6 +4,8 @@ Hours <- matrix(ncol = 12, nrow = 0)
 
 t <- as.POSIXlt(Sys.time())
 
+nb_depot_min <- 20
+
 Id <- character()
 pb <- txtProgressBar(title = "progress bar",
                      min = 0,
@@ -61,9 +63,9 @@ colnames(Table_clust_user) <-
 
 write.csv(Table_clust_user, file = "Clustering/ClusteringUsers.csv")
 
-Hours_pct <- Hours[rowSums(Hours) >= 80, ]
+Hours_pct <- Hours[rowSums(Hours) >= nb_depot_min, ]
 
-User <- User[rowSums(Hours) >= 80]
+User <- User[rowSums(Hours) >= nb_depot_min]
 
 
 for (i in 1:nrow(Hours_pct)) {

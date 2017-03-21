@@ -1,7 +1,7 @@
 
 
 
-tot_dep <- totaux_depots[totaux_depots$IdUserD != "AAAAAAAAAAA=",]
+tot_dep_error <- tot_dep[tot_dep$IdUserD != "AAAAAAAAAAA="  & tot_dep$IdUserD != "" & tot_dep$typeD %in% c(0,1,2,3,4,5),]
 Users <- vector()
 
 Ratio <- vector()
@@ -28,19 +28,15 @@ for (i in 1:length(un_user)) {
   Ratio <- c(Ratio, nrow(tot_dep[tot_dep$IdUserD==Id & (is.na(tot_dep$typeD) | tot_dep$typeD!=1),]));
   
 }
-# Rprof()
 
 Ratio <- Ratio / tot_dep_users
-to_remove <- vector();
-for(i in 1:length(tot_dep_users)){
-  if(tot_dep_users[i] <= nb_depot_min){
-    to_remove <- c(to_remove, i)
-  }
-}
-Ratio <- Ratio[-to_remove];
-Users <- Users[-to_remove];
+
+# Rprof()
+Ratio <- Ratio[tot_dep_users > nb_depot_min];
+Users <- Users[tot_dep_users > nb_depot_min];
+
 
 Table_error_users <- data.frame(Users, Ratio)
 
 
-# rm(Users, Ratio, tot_dep, to_remove)
+# rm(Users, Ratio, tot_dep)

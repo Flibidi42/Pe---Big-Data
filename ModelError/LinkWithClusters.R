@@ -9,17 +9,8 @@ tt <- table(Table_croisee$k_fit.cluster)
 
 plot(
   as.vector(tt) / sum(tt),
-  type = "l",
-  ylim = c(min(c(
-    as.vector(tt) / sum(tt),
-    as.vector(table(Table_consideree$k_fit.cluster)) /
-      nrow(Table_consideree)
-  )), 
-           max(c(
-    as.vector(tt) / sum(tt),
-    as.vector(table(Table_consideree$k_fit.cluster)) /
-      nrow(Table_consideree)
-  ))),
+  type = "p",
+  ylim = c(0,1),
   col = "red",
   main = "Relation cluster/erreur users"
 )
@@ -27,6 +18,6 @@ plot(
 points(as.vector(table(Table_consideree$k_fit.cluster)) /
          nrow(Table_consideree),
        col = "blue",
-       type = "l")
+       type = "p")
 
 rm(Table_croisee, Table_consideree)

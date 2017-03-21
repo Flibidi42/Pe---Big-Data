@@ -25,7 +25,7 @@ for(i in 1:nb_cont){
   if(nrow(df_cont)==0)
     next;
   
-  ID_Conteneur <- c(ID_Conteneur, df_cont$IdContD[1])
+  ID_Conteneur <- c(ID_Conteneur, as.character(df_cont$IdContD[1]))
   #Calcul nb de depots
   df_by_day <- df_cont[,-6];
   df_by_day <- cbind(df_by_day, as.character(df_cont$DateD))

@@ -12,13 +12,16 @@ plot(
   k_fit$centers[1, ],
   col = "red",
   type = "o",
-  ylab = "Nb de dépots",
+  ylab = "% de dépots",
   xlab = "Horaires",
-  main = "Centers of Clustering (K = 2)"
+  main = "Centers of Clustering (K = 2)",
+  ylim = c(0,80)
 )
 
 points(m[2, ], col = "green", type = "o")
 
+legend("topright", legend=c("Cluster 1", "Cluster 2"),
+       col=c("red", "green"), lty=1:2, cex=0.8, bg="transparent")
 
 print("Clustering a 2 cluster:")
 
@@ -44,15 +47,18 @@ plot(
   k_fit$centers[1, ],
   col = "red",
   type = "o",
-  ylab = "Nb de dépots",
+  ylab = "% de dépots",
   xlab = "Horaires",
-  main = "Centers of Clustering (K = 3)"
+  main = "Centers of Clustering (K = 3)",
+  ylim = c(0,80)
 )
 
 points(m[2, ], col = "green", type = "o")
 
 points(m[3, ], col = "blue", type = "o")
 
+legend("topright", legend=c("Cluster 1", "Cluster 2", "Cluster 3"),
+       col=c("red", "green", "blue"), lty=1:2, cex=0.8, bg="transparent")
 
 print("Clustering a 3 cluster:")
 
@@ -78,9 +84,10 @@ plot(
   k_fit$centers[1, ],
   col = "red",
   type = "o",
-  ylab = "Nb de dépots",
+  ylab = "% de dépots",
   xlab = "Horaires",
-  main = "Centers of Clustering (K = 4)"
+  main = "Centers of Clustering (K = 4)",
+  ylim = c(0,80)
 )
 
 points(m[2, ], col = "green", type = "o")
@@ -89,6 +96,8 @@ points(m[3, ], col = "blue", type = "o")
 
 points(m[4, ], col = "black", type = "o")
 
+legend("topright", legend=c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4"),
+       col=c("red", "green", "blue", "black"), lty=1:2, cex=0.8, bg="transparent")
 
 print("Clustering a 4 cluster:")
 
@@ -114,9 +123,10 @@ plot(
   k_fit$centers[1, ],
   col = "red",
   type = "o",
-  ylab = "Nb de dépots",
+  ylab = "% de dépots",
   xlab = "Horaires",
-  main = "Centers of Clustering (K = 5)"
+  main = "Centers of Clustering (K = 5)",
+  ylim = c(0,80)
 )
 
 points(m[2, ], col = "green", type = "o")
@@ -127,6 +137,8 @@ points(m[4, ], col = "black", type = "o")
 
 points(m[5, ], col = "yellow", type = "o")
 
+legend("topright", legend=c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4", "Cluster 5"),
+       col=c("red", "green", "blue", "black", "yellow"), lty=1:2, cex=0.8, bg="transparent")
 
 print("Clustering a 5 cluster:")
 
