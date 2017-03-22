@@ -1,5 +1,4 @@
 tot_dep <- totaux_depots[!is.na(totaux_depots$typeD),]
-#tot_dep <- tot_dep[tot_dep$typeD==1,]
 
 #Création de la table échantillonée par tranche de 2h simple
 print("Clustering Users");
