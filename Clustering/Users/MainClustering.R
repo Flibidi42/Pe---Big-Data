@@ -7,7 +7,7 @@ source("Clustering/Users/ClusteringUsers.R");
 
 #Création de la table échantillonée par tranche de 2h en tenant compte de la date et de l'heure
 #(10 dépots sur une meme tranche horaire comptent pour 1)
-print("Clustering Users with date (un peu long)");
+print("Clustering Users with date");
 source("Clustering/Users/ClusteringUser - with date.R");
 
 #Création de la table avec date, échantillonée à 4h
