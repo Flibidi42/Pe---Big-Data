@@ -13,16 +13,14 @@ heure_en_cours <- floor(t$hour / 2)
 
 User_en_cours <- vector()
 
-#On elimine les anonymes, et les datas invalides
-#On trie ensuite par date
+
 tot_dep_date <-
-  tot_dep[tot_dep$IdUserD != "AAAAAAAAAAA="  & tot_dep$IdUserD != "" 
-          & tot_dep$typeD %in% c(0,1,2,3,4,5),]
+  tot_dep[tot_dep$IdUserD != "AAAAAAAAAAA="  & tot_dep$IdUserD != "" & tot_dep$typeD %in% c(0,1,2,3,4,5),]
 tot_dep_date <- tot_dep_date[order(as.POSIXlt(strptime(
   as.character(tot_dep_date[, "DateD"]), format = "%F %H:%M:%S"
 ))), ]
 
-#barre de progression
+
 pb <- txtProgressBar(title = "progress bar",
                      min = 0,
                      max = nrow(tot_dep_date))
@@ -34,22 +32,19 @@ for (j in 1:nrow(tot_dep_date)) {
     setTxtProgressBar(pb, j)
   }
   Id <- as.character(tot_dep_date[j, "IdUserD"])
-
-
+  
   t <-
     as.POSIXlt(strptime(as.character(tot_dep_date[j, "DateD"]), format = "%F %H:%M:%S"))
   
   if (is.na(t)) {
     next;
   }
-#Si l'on a le meme user, meme date, meme time slot
-#On passe au suivant
+  
   if (Id %in% User_en_cours &&
       ((t$year - 1) * 365 + t$yday) == date_en_cours
       && floor(t$hour / 2) == heure_en_cours) {
     next;
   }
-#Sinon, on reinit l'utilisateur
   else if (((t$year - 1) * 365 + t$yday) != date_en_cours
            || floor(t$hour / 2) != heure_en_cours) {
     User_en_cours = vector()
@@ -59,16 +54,19 @@ for (j in 1:nrow(tot_dep_date)) {
     User_en_cours = c(User_en_cours, Id)
     
   }
-# actualisation de la date en cours et du time slot
+  
   date_en_cours = (t$year - 1) * 365 + t$yday
   
   heure_en_cours = floor(t$hour / 2)
   
-# Si l'user n'existe pas on ajoute
+  
+  
   if (!(Id %in% User)) {
     User <- c(User, Id)
     
     Hours <- rbind(Hours, seq(0, 0, length.out = 12))
+    
+    date_used[[length(date_used) + 1]] <- vector()
     
   }
   
@@ -80,7 +78,7 @@ for (j in 1:nrow(tot_dep_date)) {
 
 to_remove <- vector();
 
-#We remove to user without enough deposits
+
 for( i in 1:length(User)){
   if(nrow(tot_dep_date[as.character(tot_dep_date$IdUserD)==as.character(User[i]),]) < nb_depot_min)
     to_remove <- c(to_remove, i)
@@ -117,6 +115,8 @@ colnames(Table_clust_user_date) <-
     "22h-0h"
   )
 
-rm(User, Hours)
+
+# rm(User, Hours, to_remove, tot_dep_date, date_en_cours, heure_en_cours, User_en_cours,
+   # Hours_pct)
 
 write.csv(file = "Clustering/Users/ClusteringUsersWithDate.csv", x = Table_clust_user_date)

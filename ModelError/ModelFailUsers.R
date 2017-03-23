@@ -61,7 +61,7 @@ Pb_User <-
 
 Causes_pbs <- vector()
 
-
+#On calcule la cause majoritaire d'erreur
 for (i in 1:nrow(Pb_User)) {
   a <-
     tot_dep[tot_dep$typeD != 1 &
