@@ -6,46 +6,31 @@
 # -en additionnant ou en separant les courbes par container
 # -en additionnant ou en separant les courbes par type OU PAS
 # -en differenciant selon le statut d'enregistrement 
-install.packages(ggplot2)
-install.packages(data.table)
-install.packages(grid)
-install.packages(gridExtra)
-install.packages(plyr)
-
 library(ggplot2)
 library(data.table)
 library(grid)
 library(gridExtra)
-
 liste_conteneurs <- list()
-# liste_conteneurs[1] <- "FR108AA15111"
+#mettre en commentaire la ligne suivante pour observer la somme de tous
+#les depots sur tous les containers
+liste_conteneurs <- list("FR108AA15111")
+
 liste_donnees_par_jour <- list()
-# liste_conteneurs[2] <- "FR102AA15111"
 
+liste_jours <- list()
+#mettre en commentaire la ligne ci-dessous
+#dans le cas ou on veut observer un resultat continu sur la periode souhaitee
+liste_jours <- list("lundi","mardi", "mercredi", "jeudi", "vendredi", "samedi")
 
-
-liste_jours <- list("lundi", "jeudi")
-liste_jours
- # liste_jours[1]<- "lundi"
- # liste_jours[2]<- "mardi"
- # liste_jours[3]<-"mercredi"
- # liste_jours[4]<-"jeudi"
- # liste_jours[5]<-"vendredi"
- # liste_jours[6]<-"samedi"
- # liste_jours[7]<-"dimanche"
-
+ #POUR SEPARER OU NON LES GRAPHES PAR JOURS DE LA SEMAINE
  bool_graph_separes = TRUE
- bool_graph_par_container = FALSE
- bool_separer_par_utilisateur = FALSE
- bool_selection_abonnes = TRUE
+ #PAR DEFAUT (QUAND LES DEUX BOOLEENS SUIVANTS SONT A FALSE) 
+ #SONT SELECTIONNES TOUS LES UTILISATEURS
+ bool_selection_abonnes = FALSE
  bool_selection_non_abonnes = FALSE
  
 date_de_debut <- as.POSIXlt(strptime("2016-01-01 08:30:00", format = "%Y-%m-%d %H:%M:%S"))
-date_de_fin <- as.POSIXlt(strptime("2016-12-01 23:59:00", format = "%Y-%m-%d %H:%M:%S"))
-
-separation_par_container <- FALSE
-heure_debut <- ""
-heure_fin <- ""
+date_de_fin <- as.POSIXlt(strptime("2016-12-30 23:59:00", format = "%Y-%m-%d %H:%M:%S"))
 
 
 ##on commence avec seulement, affichage entre deux dates

@@ -1,4 +1,4 @@
-str_path ="./JDepotBis/"
+str_path ="JDepotBis/"
 str_file_name ="JdepotCSVwCont"
 my_data_ok <- list()
 
