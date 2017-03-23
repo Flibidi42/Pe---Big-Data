@@ -1,6 +1,7 @@
-tot_dep_error <- tot_dep[tot_dep$IdUserD != "AAAAAAAAAAA="  & 
-                           tot_dep$IdUserD != "" & 
-                           tot_dep$typeD %in% c(0,1,2,3,4,5),]
+
+
+
+tot_dep_error <- tot_dep[tot_dep$IdUserD != "AAAAAAAAAAA="  & tot_dep$IdUserD != "" & tot_dep$typeD %in% c(0,1,2,3,4,5),]
 Users <- vector()
 
 Ratio <- vector()
@@ -24,12 +25,10 @@ for (i in 1:length(un_user)) {
     
   tot_dep_users <- c(tot_dep_users, nrow(tot_dep[tot_dep$IdUserD==Id,]))
                      
-  Ratio <- c(Ratio, nrow(tot_dep[tot_dep$IdUserD==Id 
-                                 & (is.na(tot_dep$typeD) 
-                                 | tot_dep$typeD!=1),]));
+  Ratio <- c(Ratio, nrow(tot_dep[tot_dep$IdUserD==Id & (is.na(tot_dep$typeD) | tot_dep$typeD!=1),]));
   
 }
-#On calcule le ratio
+
 Ratio <- Ratio / tot_dep_users
 
 # Rprof()

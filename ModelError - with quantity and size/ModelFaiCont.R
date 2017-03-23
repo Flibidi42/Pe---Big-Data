@@ -17,7 +17,7 @@ for (i in 1:nb_cont) {
   
   if (nrow(df_cont) < nb_min_depots)
     next
-#Recupération du ratio d'erreur
+  
   Taux_fail <-
     c(Taux_fail,
       sum(
