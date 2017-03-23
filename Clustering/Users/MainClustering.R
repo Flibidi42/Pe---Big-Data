@@ -1,7 +1,7 @@
 tot_dep <- totaux_depots[!is.na(totaux_depots$typeD),]
 
 #Création de la table échantillonée par tranche de 2h simple
-print("Clustering Users");
+print("Clustering Users (un peu long)");
 source("Clustering/Users/ClusteringUsers.R");
 
 #Création de la table échantillonée par tranche de 2h en tenant compte de la date et de l'heure
