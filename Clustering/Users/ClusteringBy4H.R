@@ -1,5 +1,6 @@
 Table_clust_user_4h <- Table_clust_user_date
 
+#On regroupe les horaires
 Table_clust_user_4h[, seq(2, 13, by = 2)] =
   Table_clust_user_date[, seq(2, 13, by = 2)] + Table_clust_user_date[, seq(2, 13, by =
                                                                               2) + 1]
