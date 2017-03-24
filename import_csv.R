@@ -24,3 +24,4 @@ totaux_depots_avec_heure<-totaux_depots_avec_heure[order(totaux_depots_avec_heur
 #sans les heures
 totaux_depots_avec_heure$DateD <- as.POSIXct(strptime(totaux_depots_avec_heure$DateD, format = "%Y-%m-%d %H:%M:%S")) 
 totaux_depots_avec_heure <- totaux_depots_avec_heure[!(is.na(totaux_depots_avec_heure$DateD)),]
+s

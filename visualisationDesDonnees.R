@@ -20,7 +20,7 @@ liste_donnees_par_jour <- list()
 liste_jours <- list()
 #mettre en commentaire la ligne ci-dessous
 #dans le cas ou on veut observer un resultat continu sur la periode souhaitee
-liste_jours <- list("lundi","mardi", "mercredi", "jeudi", "vendredi", "samedi")
+#liste_jours <- list("lundi","mardi", "mercredi", "jeudi", "vendredi", "samedi")
 
  #POUR SEPARER OU NON LES GRAPHES PAR JOURS DE LA SEMAINE
  bool_graph_separes = TRUE
@@ -30,7 +30,7 @@ liste_jours <- list("lundi","mardi", "mercredi", "jeudi", "vendredi", "samedi")
  bool_selection_non_abonnes = FALSE
  
 date_de_debut <- as.POSIXlt(strptime("2016-01-01 08:30:00", format = "%Y-%m-%d %H:%M:%S"))
-date_de_fin <- as.POSIXlt(strptime("2016-12-30 23:59:00", format = "%Y-%m-%d %H:%M:%S"))
+date_de_fin <- as.POSIXlt(strptime("2016-01-01 23:59:00", format = "%Y-%m-%d %H:%M:%S"))
 
 
 ##on commence avec seulement, affichage entre deux dates
